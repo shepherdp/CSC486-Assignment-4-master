@@ -18,10 +18,10 @@ def undirected_scale_free_graph(n):
 
 def set_parameters(G, beta, gamma):
     """
-
+    Give the graph properties 'beta' and 'gamma' that will be used in update().
     :param G: A networkx graph
-    :param beta: Probability of transitioning from S -> I
-    :param gamma: Probability of transitioning from I -> R
+    :param beta: The probability of transitioning from S to I
+    :param gamma: The probability of transitioning from I to R
     :return: None
     """
 
@@ -33,8 +33,7 @@ def set_parameters(G, beta, gamma):
 
 def set_initial_states(G, perc_inf=0.1):
     """
-    Choose perc_inf * number_of_nodes nodes to be initial spreaders
-    Set the initial states of all nodes
+
     :param G: A networkx graph
     :param perc_inf: The percentage of the network to infect initially
     :return: None
@@ -42,44 +41,58 @@ def set_initial_states(G, perc_inf=0.1):
     # TODO: Task 2
     pass
 
-# Returns the number of nodes in state S
 def get_num_s(G):
+    """
+    Calculates the number of agents in state S
+    :param G: A networkx graph
+    :return: The number of agents in state S
+    """
     return len([G.nodes[i]['state'] for i in range(G.number_of_nodes()) if
                 G.nodes[i]['state'] == 'S'])
 
-# Returns the number of nodes in state I
 def get_num_i(G):
+    """
+    Calculates the number of agents in state S
+    :param G: A networkx graph
+    :return: The number of agents in state S
+    """
     return len([G.nodes[i]['state'] for i in range(G.number_of_nodes()) if
                 G.nodes[i]['state'] == 'I'])
 
-# Returns the number of nodes in state R
 def get_num_r(G):
+    """
+    Calculates the number of agents in state S
+    :param G: A networkx graph
+    :return: The number of agents in state S
+    """
     return len([G.nodes[i]['state'] for i in range(G.number_of_nodes()) if
                 G.nodes[i]['state'] == 'R'])
 
 def set_resistance(G, nodelist=[]):
     """
-    Sets the resistance value of each node in nodelist to True, and all others to False.
+    Give all nodes a property called 'resistance', and set it to True for
+    all nodes in nodelist, and False for all others.
     :param G: A networkx graph
-    :param nodelist: A list of nodes to give resistance to
-    :return: None
+    :param nodelist: The list of nodes to give resistance to
+    :return:None
     """
     # TODO: Task 5
     pass
 
 def get_influential_nodes(G):
     """
-    A function to determine the 10 most 'influential' nodes in the network
-    The number of nodes can be changed for the last task
+    Determines the 10 most influential nodes in the network.
+    The idea is to look for nodes that you *think* will be most effective
+    at slowing the disease if they are given additional resistance.
     :param G: A networkx graph
-    :return: A list of nodes
+    :return: A list of 10 integers representing the nodes you chose
     """
     # TODO: Task 6
     pass
 
 def update(G):
     """
-    Update the conditions (S/I/R) of all nodes
+    Updates the state of all nodes in the network
     :param G: A networkx graph
     :return: None
     """
@@ -87,9 +100,9 @@ def update(G):
     # TODO: Task 7
     pass
 
-def run_sim(G, numsteps=250):
+def run_sim(G, numsteps=100):
     """
-    Run a simulation for numsteps steps, then plot the SIR curves
+    Run a simulation for numsteps steps and plot the resulting curves
     :param G: A networkx graph
     :param numsteps: The number of steps to run the simulation for
     :return: None
