@@ -33,7 +33,9 @@ def set_parameters(G, beta, gamma):
 
 def set_initial_states(G, perc_inf=0.1):
     """
-
+    Give each node in the graph a property called 'state'.
+    Initialize the state of perc_inf * n nodes to I (infected), and
+    initialize all other nodes' states to S (susceptible).
     :param G: A networkx graph
     :param perc_inf: The percentage of the network to infect initially
     :return: None
